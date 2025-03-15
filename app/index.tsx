@@ -1,7 +1,8 @@
 import React from 'react';
 import { 
-    View, 
-    ScrollView, 
+    View,
+    SafeAreaView,
+    ScrollView,
     StyleSheet, 
     Dimensions, 
     ImageBackground,
@@ -13,6 +14,7 @@ import { useTheme } from '@/context/ThemeContext';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import { LinearGradient } from 'expo-linear-gradient';
 import Footer from '@/components/Footer';
+import { StatusBar, Platform } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -49,7 +51,7 @@ export default function LandingScreen() {
     const heroImageUrl = "https://img.freepik.com/free-vector/mathematics-background_23-2148153966.jpg";
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 , paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }}>
             <ScrollView 
                 style={[styles.container, { backgroundColor: colors.background }]}
                 showsVerticalScrollIndicator={false}
@@ -185,20 +187,21 @@ const styles = StyleSheet.create({
     },
     themeToggle: {
         position: 'absolute',
-        top: 20,
-        right: 20,
+        top: 0,
+        right: 0,
         zIndex: 1,
     },
     heroContent: {
         alignItems: 'center',
         padding: 20,
-        paddingBottom: 40,
+        paddingBottom: 30,
     },
     heroImage: {
         width: width * 0.8,
         height: width * 0.5,
         marginBottom: 20,
         borderRadius: 15,
+        marginTop: -20,
     },
     heroTitle: {
         fontSize: 32,
@@ -209,7 +212,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'Poppins_400Regular',
         textAlign: 'center',
-        marginTop: 10,
+        marginTop: 15,
     },
     statsContainer: {
         marginTop: -40,
@@ -324,4 +327,4 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontFamily: 'Poppins_500Medium',
     },
-}); 
+});

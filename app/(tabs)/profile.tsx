@@ -5,13 +5,14 @@ import { useTheme } from '@/context/ThemeContext';
 import { useAuth } from '@/context/AuthContext';
 import Footer from '@/components/Footer';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { StatusBar, Platform } from 'react-native';
 
 export default function ProfileScreen() {
     const { colors, isDarkMode, toggleTheme } = useTheme();
     const { user, logout } = useAuth();
 
     return (
-        <View style={{ flex: 1, backgroundColor: colors.background }}>
+        <View style={{ flex: 1, backgroundColor: colors.background , paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }}>
             <View style={styles.container}>
                 {/* Profile Header */}
                 <View style={[styles.header, { backgroundColor: colors.headerBg }]}>

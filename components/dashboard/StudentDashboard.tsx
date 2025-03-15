@@ -1,8 +1,9 @@
 import React from 'react';
 import { 
-    View, 
-    ScrollView, 
-    StyleSheet, 
+    View,
+    ScrollView,
+    StyleSheet,
+    SafeAreaView,
     Dimensions,
     TouchableOpacity
 } from 'react-native';
@@ -46,8 +47,8 @@ export default function StudentDashboard() {
     ];
 
     return (
-        <View style={{ flex: 1 }}>
-            <ScrollView 
+        <SafeAreaView style={{ flex: 1 }}>
+            <ScrollView
                 style={[styles.container, { backgroundColor: colors.background }]}
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={styles.scrollContent}
@@ -86,7 +87,7 @@ export default function StudentDashboard() {
                 {/* Menu Grid */}
                 <View style={styles.menuGrid}>
                     {menuItems.map((item, index) => (
-                        <Animated.View 
+                        <Animated.View
                             key={item.title}
                             entering={FadeInDown.delay(index * 100).duration(600)}
                             style={styles.menuItem}
@@ -110,7 +111,7 @@ export default function StudentDashboard() {
                 </View>
             </ScrollView>
             <Footer />
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -210,4 +211,4 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 5,
     },
-}); 
+});

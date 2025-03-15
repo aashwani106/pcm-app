@@ -127,6 +127,7 @@ export default function TutorDashboard() {
                         </Animated.View>
                     ))}
                 </View>
+ 
             </ScrollView>
             <Footer />
         </View>

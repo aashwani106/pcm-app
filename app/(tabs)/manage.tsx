@@ -5,6 +5,7 @@ import { useTheme } from '@/context/ThemeContext';
 import Footer from '@/components/Footer';
 import { userApi } from '@/services/userApis';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { StatusBar, Platform } from 'react-native';
 
 interface Student {
     _id: string;
@@ -52,7 +53,7 @@ export default function ManageScreen() {
     };
 
     return (
-        <View style={{ flex: 1, backgroundColor: colors.background }}>
+        <View style={{ flex: 1, backgroundColor: colors.background , paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }}>
             <ScrollView 
                 style={styles.container}
                 contentContainerStyle={styles.scrollContent}
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
     },
     header: {
         padding: 20,
-        paddingTop: 60,
+        // paddingTop: 10,
         borderBottomLeftRadius: 30,
         borderBottomRightRadius: 30,
         marginBottom: 30,
